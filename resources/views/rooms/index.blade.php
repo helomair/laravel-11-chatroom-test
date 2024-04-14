@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="room-card">
+    <x-room-card>
         <div class="room-buttons">
             <a href="{{ route('rooms.create') }}">
                 <button type="button" class="btn btn-submit">New Room</button>
@@ -24,18 +24,10 @@
                 @endforeach
             </div>
         </div>
-    </div>
+    </x-room-card>
 
     <style>
-        .room-card {
-            border-radius: 10px;
-            box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
-            margin: 20px 0;
-            padding: 3em;
-            height: 90vh;
-        }
-
-        .room-card .room-buttons button {
+        .room-buttons button {
             margin-right: 30px;
         }
 

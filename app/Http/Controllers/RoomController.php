@@ -40,6 +40,13 @@ class RoomController extends Controller {
      * Display the specified resource.
      */
     public function show(Room $room) {
+        $room->load([
+            'messagesLatest',
+            'messagesLatest.user:id,name'
+        ]);
+
+        // dd($room->toArray());
+        return view('rooms.show', compact('room'));
     }
 
     /**
