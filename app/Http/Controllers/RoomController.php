@@ -45,7 +45,6 @@ class RoomController extends Controller {
             'messagesLatest.user:id,name'
         ]);
 
-        // dd($room->toArray());
         return view('rooms.show', compact('room'));
     }
 

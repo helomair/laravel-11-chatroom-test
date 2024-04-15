@@ -36,7 +36,6 @@
             /* border: red 1px solid; */
             height: 100%;
             width: 100%;
-            font-family: sans-serif;
             font-weight: bold;
         }
 
