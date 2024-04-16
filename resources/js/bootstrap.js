@@ -9,4 +9,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * allow your team to quickly build robust real-time web applications.
  */
 
+if (!window.Livewire) {
+    window.Livewire.start();
+}
+
 import './echo';

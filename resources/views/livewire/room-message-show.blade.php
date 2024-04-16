@@ -1,29 +1,47 @@
 <div>
-    @foreach ($messages as $message)
-        <div class="message-{{ $message->type }}" wire:key="{{ $message->id }}">
-            @if ($message->type !== 'self')
-                <div class="message-user">{{ $message->user->name }}</div>
+    @foreach ($messages as $index => $message)
+        <div class="message-{{ $message['type'] }}" wire:key="{{ $index }}">
+            @if ($message['type'] !== 'self')
+                <div class="message-user">{{ $message['user']['name'] }}</div>
             @endif
 
             <div class="message-body">
                 <div class="message-content">
-                    {{ $message->content }}
+                    {{ $message['content'] }}
                 </div>
                 <div class="message-date">
-                    <span>{{ $message->created_at }}</span>
+                    <span>{{ $message['created_at'] }}</span>
                 </div>
             </div>
         </div>
     @endforeach
-    {{-- 
-    <script type="module">
-        Echo.channel("room." + {{ $room->id }})
-            .listen('NewMessage', (e) => {
-                console.log(e.message);
-            });
-    </script> --}}
+
+    @script
+        <script type="module">
+            Echo.channel("room." + {{ $roomId }})
+                .listen('NewMessage', (e) => {
+                    $wire.addMessage(e.messageData)
+                });
+        </script>
+    @endscript
 
     <style>
+        .messages {
+            display: flex;
+            flex-direction: column-reverse;
+            padding: 20px;
+            overflow-y: scroll;
+            background-color: #fff;
+            border-radius: 20px;
+            border: 2px solid #ccc;
+            /* box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.5); */
+        }
+
+        ::-webkit-scrollbar {
+            width: 0;
+            background: transparent;
+        }
+
         .message-others {
             margin: 10px 0;
         }

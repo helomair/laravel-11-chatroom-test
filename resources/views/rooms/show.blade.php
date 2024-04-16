@@ -4,19 +4,12 @@
     <x-room-card>
         <div class='room-message-box'>
             <div class='messages'>
-                @livewire(MessageItems::class, ['room' => $room])
+                @livewire(RoomMessageShow::class, ['room' => $room])
             </div>
 
             <livewire:new-message :room_id='$room->id' />
         </div>
     </x-room-card>
-
-    {{-- <script type="module">
-        Echo.channel("room." + {{ $room->id }})
-            .listen('NewMessage', (e) => {
-                console.log(e.message);
-            });
-    </script> --}}
 
     <style>
         .room-message-box {

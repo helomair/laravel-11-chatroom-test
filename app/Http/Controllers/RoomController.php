@@ -41,8 +41,8 @@ class RoomController extends Controller {
      */
     public function show(Room $room) {
         $room->load([
-            'messagesLatest',
-            'messagesLatest.user:id,name'
+            'messages',
+            'messages.user:id,name'
         ]);
 
         return view('rooms.show', compact('room'));

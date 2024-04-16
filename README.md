@@ -1,6 +1,6 @@
 ## Introduction
 
-This is a simple chatroom just for testing Laravel 11 & Livewire, wanna tried Laravel Reverb but Livewire is good enough.
+This is a simple chatroom just for testing Laravel 11 & Livewire & Laravel Reverb.
 
 ## Requirements
 

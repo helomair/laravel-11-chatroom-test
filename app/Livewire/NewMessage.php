@@ -29,10 +29,12 @@ class NewMessage extends Component {
         $data = $this->only(['room_id', 'content']);
         $data['user_id'] = Auth::user()->id;
         $newMessage = Message::create($data);
+        $newMessage->load('user');
 
         session()->flash('status', 'Message successfully stored!');
 
-        $this->dispatch('NewMessage', $newMessage);
-        // event(new \App\Events\NewMessage($this->room_id, $this->content));
+        event(new \App\Events\NewMessage($this->room_id, $newMessage->toArray()));
+
+        $this->reset();
     }
 }

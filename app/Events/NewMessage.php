@@ -18,7 +18,7 @@ class NewMessage implements ShouldBroadcast {
      */
     public function __construct(
         private string $roomId,
-        public string $message
+        public array $messageData
     ) {
     }
 
